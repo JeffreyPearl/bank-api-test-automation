@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Bank</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 480px; margin: 40px auto; }
+        input, button { padding: 8px; margin: 4px 0; width: 100%; box-sizing: border-box; }
+        button { cursor: pointer; }
+        #message { margin-top: 12px; font-weight: bold; }
+        .error { color: #b00020; }
+        .success { color: #1b7f3b; }
+    </style>
+</head>
+<body>
+    <h2>Simple Bank</h2>
+
+    <h3>Create account</h3>
+    <input id="holderName" placeholder="Holder name">
+    <input id="initialDeposit" placeholder="Initial deposit" type="number">
+    <button id="createBtn">Create Account</button>
+
+    <h3>Deposit</h3>
+    <input id="depositId" placeholder="Account ID" type="number">
+    <input id="depositAmount" placeholder="Amount" type="number">
+    <button id="depositBtn">Deposit</button>
+
+    <h3>Check balance</h3>
+    <input id="balanceId" placeholder="Account ID" type="number">
+    <button id="balanceBtn">Get Balance</button>
+
+    <div id="message"></div>
+
+    <script>
+        const msg = document.getElementById('message');
+
+        function show(text, ok) {
+            msg.textContent = text;
+            msg.className = ok ? 'success' : 'error';
+        }
+
+        // Builds one readable error line from the server reply
+        function errorText(data) {
+            let text = data.message || 'Request failed';
+            if (data.errors) {
+                const details = Object.entries(data.errors)
+                    .map(([field, problem]) => field + ' ' + problem)
+                    .join(', ');
+                text += ': ' + details;
+            }
+            return text;
+        }
+
+        // Sends a request and never crashes, even if the reply is not JSON
+        async function send(url, method, body) {
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body ? JSON.stringify(body) : undefined
+                });
+                let data = {};
+                try { data = await res.json(); } catch (e) { /* reply was not JSON */ }
+                if (!res.ok && !data.message) {
+                    data.message = 'Request failed (status ' + res.status + ')';
+                }
+                return { ok: res.ok, data: data };
+            } catch (e) {
+                return { ok: false, data: { message: 'Cannot reach the server' } };
+            }
+        }
+
+        document.getElementById('createBtn').onclick = async () => {
+            const name = document.getElementById('holderName').value.trim();
+            const deposit = document.getElementById('initialDeposit').value;
+            if (deposit === '') { show('Initial deposit is required', false); return; }
+
+            const r = await send('/accounts', 'POST', {
+                holderName: name,
+                initialDeposit: Number(deposit)
+            });
+            show(r.ok ? 'Account created. ID: ' + r.data.id : errorText(r.data), r.ok);
+        };
+
+        document.getElementById('depositBtn').onclick = async () => {
+            const id = document.getElementById('depositId').value;
+            const amount = document.getElementById('depositAmount').value;
+            if (!id) { show('Account ID is required', false); return; }
+            if (amount === '') { show('Amount is required', false); return; }
+
+            const r = await send('/accounts/' + id + '/deposit', 'POST', {
+                amount: Number(amount)
+            });
+            show(r.ok ? 'Deposit done. Balance: ' + r.data.balance : errorText(r.data), r.ok);
+        };
+
+        document.getElementById('balanceBtn').onclick = async () => {
+            const id = document.getElementById('balanceId').value;
+            if (!id) { show('Account ID is required', false); return; }
+
+            const r = await send('/accounts/' + id, 'GET');
+            show(r.ok ? 'Balance: ' + r.data.balance : errorText(r.data), r.ok);
+        };
+    </script>
+</body>
+</html>
