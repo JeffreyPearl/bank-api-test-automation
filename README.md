@@ -1,3 +1,6 @@
+![CI](https://github.com/JeffreyPearl/bank-api-test-automation/actions/workflows/ci.yml/badge.svg)
+
+
 ## Screenshots
 | CI pipeline | Cucumber report |
 |---|---|
@@ -8,7 +11,6 @@
 | ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
 
 
-![CI](https://github.com/JeffreyPearl/bank-api-test-automation/actions/workflows/ci.yml/badge.svg)
 
 # Bank API Test Automation
 
