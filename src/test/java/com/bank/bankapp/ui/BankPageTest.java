@@ -20,7 +20,11 @@ public class BankPageTest {
 
     @BeforeEach
     void setUp() {
-        driver = new ChromeDriver();
+    	org.openqa.selenium.chrome.ChromeOptions options = new org.openqa.selenium.chrome.ChromeOptions();
+    	if (System.getenv("CI") != null) {
+    	    options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080");
+    	}
+    	driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("http://localhost:8081");
