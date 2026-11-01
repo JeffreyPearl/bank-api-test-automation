@@ -1,7 +1,7 @@
 ## Screenshots
 | CI pipeline | Cucumber report |
 |---|---|
-| ![CI](docs/ci-green.png) | ![Cucumber](docs/cucumber-report.png) |
+| ![CI](docs/ci-green.png) | ![Cucumber](docs/Cucumber-report.png) |
 
 | Postman transfer | Web page |
 |---|---|
