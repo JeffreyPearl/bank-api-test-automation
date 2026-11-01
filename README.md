@@ -31,6 +31,7 @@ Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory), Maven, GitHub Actions
 | GET | `/accounts/{id}` | Get an account | 200 | 404 |
 | POST | `/accounts/{id}/deposit` | Deposit money | 200 | 400, 404 |
 | POST | `/accounts/{id}/withdraw` | Withdraw money | 200 | 400, 404, 409 |
+<<<<<<< HEAD
 | POST | `/transfers` | Transfer between accounts | 200 | 400, 404, 409 |
 
 ## Testing approach
@@ -74,3 +75,16 @@ The workflow in `.github/workflows/ci.yml` runs on every push and pull request:
 
 ## Author
 Jeffrey Pearl Immanuel R
+=======
+| POST | `/transfers` |
+
+
+## Screenshots
+| CI pipeline | Cucumber report |
+|---|---|
+| ![CI](docs/ci-green.png) | ![Cucumber](docs/Cucumber-report.png) |
+
+| Postman transfer | Web page |
+|---|---|
+| ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
+>>>>>>> 3b7eae36b9602b4f7c462e218431e36e3d4ef026
