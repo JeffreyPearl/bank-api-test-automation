@@ -32,7 +32,7 @@ Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory), Maven, springdoc OpenAP
 | API automation | REST Assured + JUnit | 8 |
 | UI automation | Selenium WebDriver | 4 |
 | BDD | Cucumber (Gherkin) | 3 scenarios |
-| Code metrics | CK tool | 1 |
+| Spring context load | JUnit | 1 |
 
 The full run executes 16 automated tests.
 
