@@ -1,3 +1,13 @@
+## Screenshots
+| CI pipeline | Cucumber report |
+|---|---|
+| ![CI](docs/ci-green.png) | ![Cucumber](docs/cucumber-report.png) |
+
+| Postman transfer | Web page |
+|---|---|
+| ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
+
+
 ![CI](https://github.com/JeffreyPearl/bank-api-test-automation/actions/workflows/ci.yml/badge.svg)
 
 # Bank API Test Automation
