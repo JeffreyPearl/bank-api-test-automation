@@ -1,17 +1,5 @@
 ![CI](https://github.com/JeffreyPearl/bank-api-test-automation/actions/workflows/ci.yml/badge.svg)
 
-
-## Screenshots
-| CI pipeline | Cucumber report |
-|---|---|
-| ![CI](docs/ci-green.png) | ![Cucumber](docs/Cucumber-report.png) |
-
-| Postman transfer | Web page |
-|---|---|
-| ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
-
-
-
 # Bank API Test Automation
 
 A small banking application built with Spring Boot, with a multi-layer automated
@@ -36,3 +24,13 @@ Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory), Maven, GitHub Actions
 | POST | `/accounts/{id}/deposit` | Deposit money | 200 | 400, 404 |
 | POST | `/accounts/{id}/withdraw` | Withdraw money | 200 | 400, 404, 409 |
 | POST | `/transfers` |
+
+
+## Screenshots
+| CI pipeline | Cucumber report |
+|---|---|
+| ![CI](docs/ci-green.png) | ![Cucumber](docs/Cucumber-report.png) |
+
+| Postman transfer | Web page |
+|---|---|
+| ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
