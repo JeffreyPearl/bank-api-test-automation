@@ -33,8 +33,9 @@ Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory), Maven, springdoc OpenAP
 | UI automation | Selenium WebDriver | 4 |
 | BDD | Cucumber (Gherkin) | 3 scenarios |
 | Spring context load | JUnit | 1 |
+| Unit tests | JUnit + Mockito | 9 |
 
-The full run executes 16 automated tests.
+The full run executes 25 automated tests.
 
 Highlights:
 - Rollback test proving a failed transfer does not lose money
@@ -83,3 +84,7 @@ Jeffrey Pearl Immanuel R
 | Swagger UI |
 |---|
 | ![Swagger](docs/swagger-ui.png) |
+
+| JaCoCo coverage |
+|---|
+| ![JaCoCo](docs/jacoco-report.png) |
