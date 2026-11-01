@@ -1,11 +1,3 @@
-## Screenshots
-| CI pipeline | Cucumber report |
-|---|---|
-| ![CI](docs/ci-green.png) | ![Cucumber](docs/cucumber-report.png) |
-
-| Postman transfer | Web page |
-|---|---|
-| ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
 ![CI](https://github.com/JeffreyPearl/bank-api-test-automation/actions/workflows/ci.yml/badge.svg)
 
 # Bank API Test Automation
@@ -22,7 +14,7 @@ Every push runs the full suite automatically on GitHub Actions.
 - Simple web page (HTML + JavaScript) that uses the same API
 
 ## Tech stack
-Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory), Maven, GitHub Actions
+Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory), Maven, springdoc OpenAPI (Swagger UI), GitHub Actions
 
 ## API endpoints
 | Method | Endpoint | Purpose | Success | Errors |
@@ -62,8 +54,9 @@ The workflow in `.github/workflows/ci.yml` runs on every push and pull request:
 ## How to run locally
 1. Start the app: `mvn spring-boot:run` (runs on port 8081)
 2. Open http://localhost:8081 for the web page
-3. In a second terminal: `mvn test`
-4. Cucumber report: `target/cucumber.html`
+3. Open http://localhost:8081/swagger-ui.html for the interactive API docs (Swagger)
+4. In a second terminal: `mvn test`
+5. Cucumber report: `target/cucumber.html`
 
 ## Project structure
 - `controller`, `service`, `repository`, `model`, `exception`: application layers
@@ -87,4 +80,7 @@ Jeffrey Pearl Immanuel R
 | Postman transfer | Web page |
 |---|---|
 | ![Postman](docs/postman-transfer.png) | ![UI](docs/web-ui.png) |
->>>>>>> 3b7eae36b9602b4f7c462e218431e36e3d4ef026
+
+| Swagger UI |
+|---|
+| ![Swagger](docs/swagger-ui.png) |
